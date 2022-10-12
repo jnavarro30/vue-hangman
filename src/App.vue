@@ -1,10 +1,9 @@
 <template>
-  <MainGame msg="Welcome to Your Vue.js App"/>
+  <MainGame />
 </template>
 
 <script>
 import MainGame from './components/MainGame.vue'
-
 export default {
   name: 'App',
   components: {
