@@ -1,5 +1,6 @@
 <template>
     <button @click="getWord()">New Word</button>
+    <button @click="showWord()">Show Word</button>
     <div class="mystery-word">{{ mysteryWord }}</div>
 </template>
 
@@ -9,6 +10,7 @@ export default {
     data() {
       return {
         mysteryWord: '- - - - - - - -',
+        chosenWord: '- - - - - - - -',
         testWords: ['one', 'two', 'three', 'four']
       }
     },
@@ -17,13 +19,15 @@ export default {
         async getWord() {
           let res = await fetch('https://random-word-api.herokuapp.com/word');
           let data = await res.json();
-          console.log(this.mysteryWord);
-          this.mysteryWord = data[0];
+        
+          this.chosenWord = data[0];
+          let encrypted = '- '.repeat(this.chosenWord.length);
+          this.mysteryWord = encrypted;
           console.log(data);
         }
       ,
-      hideWord() {
-        
+      showWord() {
+        this.mysteryWord = this.chosenWord;
       }
     },
 }
