@@ -62,23 +62,23 @@ export default {
   grid-template-columns: repeat(6, 1fr);
   place-content: center;
   grid-gap: 0.5rem;
-  height: 300px;
+  height: 40%;
   width: 80%;
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .letter {
   color: white;
   border: 2px solid var(--main-text-color);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
 .letter:hover {
-  background-color: white;
+  background-color: var(--main-text-color);
   color: black;
   box-shadow: 0px 0px 4px 4px var(--main-text-color);
 }

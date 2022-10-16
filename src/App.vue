@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import MainGame from './components/MainGame.vue'
+import MainGame from "./components/MainGame.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    MainGame
-  }
-}
+    MainGame,
+  },
+};
 </script>
 
 <style>
@@ -20,7 +20,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-image: url("./assets/stick__figure.jpeg");
+  height: 100vh;
 }
 </style>
