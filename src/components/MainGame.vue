@@ -3,7 +3,7 @@
     <HeaderTitle />
     <CanvasScreen />
     <MysteryWord />
-    <AlphabetLetters />
+    <AlphabetKeyboard />
   </main>
 </template>
 
@@ -11,7 +11,7 @@
 import HeaderTitle from './HeaderTitle.vue';
 import CanvasScreen from './CanvasScreen.vue';
 import MysteryWord from './MysteryWord.vue';
-import AlphabetLetters from './AlphabetLetters.vue';
+import AlphabetKeyboard from './AlphabetKeyboard.vue';
 
 export default {
   name: 'MainGame',
@@ -19,8 +19,8 @@ export default {
     HeaderTitle,
     CanvasScreen,
     MysteryWord,
-    AlphabetLetters
-  }
+    AlphabetKeyboard
+}
 }
 </script>
 
