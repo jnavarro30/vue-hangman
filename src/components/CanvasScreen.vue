@@ -1,14 +1,35 @@
 <template>
   <div class="canvas-container">
-    <button>New Word</button>
+    <button @click="getWord()">New Word</button>
     <div class="canvas"></div>
-    <button>Show Word</button>
+    <button @click="showWord()">Show Word</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "CanvasScreen",
+  data() {
+    return {
+      mysteryWord: "- - - - - - - -",
+      chosenWord: "- - - - - - - -",
+      testWords: ["one", "two", "three", "four"],
+    };
+  },
+  methods: {
+    async getWord() {
+      let res = await fetch("https://random-word-api.herokuapp.com/word");
+      let data = await res.json();
+
+      this.chosenWord = data[0];
+      let encrypted = "- ".repeat(this.chosenWord.length);
+      this.mysteryWord = encrypted;
+      console.log(data);
+    },
+    showWord() {
+      this.mysteryWord = this.chosenWord;
+    },
+  },
 };
 </script>
 
