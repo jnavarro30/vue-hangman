@@ -1,6 +1,6 @@
 <template>
   <div class="canvas-container">
-    <button @click="getWord()">New Word</button>
+    <button @click="fetchWord()">New Word</button>
     <div class="canvas"></div>
     <button @click="showWord()">Show Word</button>
   </div>
@@ -9,25 +9,25 @@
 <script>
 export default {
   name: "CanvasScreen",
+
   data() {
     return {
-      mysteryWord: "- - - - - - - -",
       chosenWord: "- - - - - - - -",
-      testWords: ["one", "two", "three", "four"],
+      hiddenWord: "- - - - - - - -",
     };
   },
   methods: {
-    async getWord() {
+    async fetchWord() {
       let res = await fetch("https://random-word-api.herokuapp.com/word");
       let data = await res.json();
-
       this.chosenWord = data[0];
-      let encrypted = "- ".repeat(this.chosenWord.length);
-      this.mysteryWord = encrypted;
+      this.hiddenWord = "-".repeat(this.chosenWord.length);
       console.log(data);
+      this.$emit("fetchWord", [this.chosenWord, this.hiddenWord]);
     },
     showWord() {
-      this.mysteryWord = this.chosenWord;
+      this.hiddenWord = this.chosenWord;
+      this.$emit("showWord", this.hiddenWord);
     },
   },
 };
@@ -38,8 +38,7 @@ export default {
   display: flex;
   align-items: center;
   height: 28%;
-  width: 70%;
-  border: 5px solid red;
+  width: 80%;
   margin: 0 auto;
 }
 .canvas {
@@ -59,5 +58,6 @@ button {
   width: 10rem;
   cursor: pointer;
   color: black;
+  font-weight: bold;
 }
 </style>

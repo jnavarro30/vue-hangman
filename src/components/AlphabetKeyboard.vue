@@ -65,7 +65,7 @@ export default {
   height: 40%;
   width: 80%;
   margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .letter {

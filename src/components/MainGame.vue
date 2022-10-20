@@ -2,8 +2,11 @@
   <MqResponsive tag="section" target="md+">
     <div class="main">
       <HeaderTitle />
-      <CanvasScreen />
-      <MysteryWord />
+      <CanvasScreen
+        v-on:fetchWord="updateChosenWord($event)"
+        v-on:showWord="updateHiddenWord($event)"
+      />
+      <ChosenWord :hiddenWord="hiddenWord" />
       <AlphabetKeyboard />
     </div>
   </MqResponsive>
@@ -12,18 +15,33 @@
 <script>
 import HeaderTitle from "./HeaderTitle.vue";
 import CanvasScreen from "./CanvasScreen.vue";
-import MysteryWord from "./MysteryWord.vue";
+import ChosenWord from "./ChosenWord.vue";
 import AlphabetKeyboard from "./AlphabetKeyboard.vue";
 import { MqResponsive } from "vue3-mq";
 
 export default {
   name: "MainGame",
+  data() {
+    return {
+      chosenWord: "- - - - - - - -",
+      hiddenWord: "- - - - - - - -",
+    };
+  },
   components: {
     HeaderTitle,
     CanvasScreen,
-    MysteryWord,
+    ChosenWord,
     AlphabetKeyboard,
     MqResponsive,
+  },
+  methods: {
+    updateChosenWord(values) {
+      this.chosenWord = values[0];
+      this.hiddenWord = values[1];
+    },
+    updateHiddenWord(value) {
+      this.hiddenWord = value;
+    },
   },
 };
 </script>
