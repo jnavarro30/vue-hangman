@@ -5,7 +5,7 @@
 <script>
 export default {
   name: "ChosenWord",
-  props: ["chosenWord", "hiddenWord"],
+  props: ["hiddenWord"],
   data() {
     return {};
   },
@@ -16,7 +16,7 @@ export default {
 .word {
   color: white;
   font-size: 2.5rem;
-  letter-spacing: .6rem;
-  margin-top: 3rem;
+  letter-spacing: 0.6rem;
+  margin-top: 1.5rem;
 }
 </style>

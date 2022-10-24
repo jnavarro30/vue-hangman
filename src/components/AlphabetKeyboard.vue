@@ -1,5 +1,5 @@
 <template>
-  <div class="alphabet-keyboard">
+  <div class="alphabet-keyboard" :class="{ disable: isDisabled }">
     <div
       class="letter"
       :class="{ hidden: usedLetters.includes(letter) }"
@@ -15,8 +15,10 @@
 <script>
 export default {
   name: "AlphabetKeyboard",
+  props: ["isDisabled"],
   data() {
     return {
+      usedLetters: [],
       alphabet: [
         "a",
         "b",
@@ -45,12 +47,13 @@ export default {
         "y",
         "z",
       ],
-      usedLetters: [],
     };
   },
   methods: {
     selectLetter(letter) {
       this.usedLetters.push(letter);
+      this.$emit("selectLetter", this.usedLetters);
+      console.log(this.isDisabled, "yoooooo")
     },
   },
 };
@@ -65,7 +68,7 @@ export default {
   height: 40%;
   width: 80%;
   margin: 0 auto;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .letter {
@@ -83,6 +86,9 @@ export default {
   box-shadow: 0px 0px 4px 4px var(--main-text-color);
 }
 
+.disable {
+  pointer-events: none;
+}
 .hidden {
   visibility: hidden;
 }
