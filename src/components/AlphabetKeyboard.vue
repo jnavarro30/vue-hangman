@@ -53,7 +53,6 @@ export default {
     selectLetter(letter) {
       this.usedLetters.push(letter);
       this.$emit("selectLetter", this.usedLetters);
-      console.log(this.isDisabled, "yoooooo")
     },
   },
 };
