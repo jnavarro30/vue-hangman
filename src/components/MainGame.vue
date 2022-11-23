@@ -4,7 +4,7 @@
       <HeaderTitle />
       <div class="canvas-container">
         <button @click="newWord()">New Word</button>
-        <CanvasScreen />
+        <CanvasScreen :lives="lives" />
         <button @click="showWord()">Show Word</button>
       </div>
       <ChosenWord :hiddenWord="hiddenWord" />
@@ -27,7 +27,8 @@ export default {
       chosenWord: "- - - - - - - -",
       hiddenWord: "- - - - - - - -",
       usedLetters: [],
-      isDisabled: false
+      isDisabled: false,
+      lives: 6
     };
   },
   mounted() {
@@ -47,6 +48,7 @@ export default {
       this.chosenWord = data[0];
       this.hiddenWord = "-".repeat(this.chosenWord.length);
       this.isDisabled = false;
+      this.lives = 6;
       console.log(data);
     },
     showWord() {
@@ -76,6 +78,11 @@ export default {
               alert("You Win!");
             }, 500);
             return;
+          }
+        } else {
+          this.lives--;
+          if (this.lives === 0) {
+            this.isDisabled = true;
           }
         }
       }
