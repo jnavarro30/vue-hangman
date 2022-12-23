@@ -1,5 +1,5 @@
 <template>
-    <canvas id="canvas" @mousemove="draw"></canvas>
+    <canvas id="canvas" ref="canvas"></canvas>
 </template>
 
 <script>
@@ -7,12 +7,13 @@ export default {
   name: "CanvasScreen",
   props: ["lives"],
   mounted() {
-    this.canvas = document.getElementById('canvas');
+    this.canvas = this.$refs.canvas;
     this.ctx = this.canvas.getContext('2d');
     this.gallows();
   },
   data() {
     return {
+      canvas: null,
       ctx: null,
       x: 0,
       y: 0
@@ -25,7 +26,6 @@ export default {
       console.log(this.x, this.y);
     },
     drawLine(x1, y1, x2, y2) {
-      // let ctx = this.canvas;
       this.ctx.beginPath();
       this.ctx.strokeStyle = 'white';
       this.ctx.lineWidth = 1;
@@ -34,12 +34,12 @@ export default {
       this.ctx.stroke();
       this.ctx.closePath();
     },
-    draw(e) {
-      // this.drawLine(this.x, this.y, e.offsetX, e.offsetY);
-      this.x = e.offsetX;
-      this.y = e.offsetY;
-      console.log(e.offsetX, e.offsetY);
-    },
+    // draw(e) {
+    //   // this.drawLine(this.x, this.y, e.offsetX, e.offsetY);
+    //   this.x = e.offsetX;
+    //   this.y = e.offsetY;
+    //   console.log(e.offsetX, e.offsetY);
+    // },
     gallows() {
       this.drawLine(70, 20, 70, 120);
       this.drawLine(40, 120, 100, 120);

@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>Hangman</h1>
+    <h1 data-test="title">Hangman</h1>
   </header>
 </template>
     

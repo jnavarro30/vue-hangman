@@ -1,5 +1,4 @@
 <template>
-  <MqResponsive tag="section" target="md+">
     <div class="main">
       <HeaderTitle />
       <div class="canvas-container">
@@ -10,7 +9,6 @@
       <ChosenWord :hiddenWord="hiddenWord" />
       <AlphabetKeyboard v-on:selectLetter="updateHiddenWord($event)" :isDisabled="isDisabled" />
     </div>
-  </MqResponsive>
 </template>
 
 <script>
@@ -18,7 +16,6 @@ import HeaderTitle from "./HeaderTitle.vue";
 import CanvasScreen from "./CanvasScreen.vue";
 import ChosenWord from "./ChosenWord.vue";
 import AlphabetKeyboard from "./AlphabetKeyboard.vue";
-import { MqResponsive } from "vue3-mq";
 
 export default {
   name: "MainGame",
@@ -39,7 +36,6 @@ export default {
     CanvasScreen,
     ChosenWord,
     AlphabetKeyboard,
-    MqResponsive,
   },
   methods: {
     async newWord() {

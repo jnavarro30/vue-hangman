@@ -1,5 +1,5 @@
 <template>
-  <div class="word">{{ hiddenWord }}</div>
+  <div class="word" data-test="hiddenWord">{{ hiddenWord }}</div>
 </template>
 
 <script>

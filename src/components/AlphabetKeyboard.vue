@@ -6,6 +6,7 @@
       v-for="letter in alphabet"
       :key="letter"
       @click="selectLetter(letter)"
+      data-test="letter"
     >
       {{ letter }}
     </div>
