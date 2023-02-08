@@ -1,5 +1,6 @@
 <template>
   <div class="alphabet-keyboard" :class="{ disable: isDisabled }">
+    hi
     <div
       class="letter"
       :class="{ hidden: usedLetters.includes(letter) }"
