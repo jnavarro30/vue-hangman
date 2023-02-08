@@ -1,19 +1,18 @@
 import { shallowMount } from '@vue/test-utils';
-import ChosenWord from '../../src/components/ChosenWord';
+import ChosenWord from '@/components/ChosenWord';
 
 describe('ChosenWord.vue', () => {
-    const wrapper = shallowMount(ChosenWord, {
-        propsData: {
-            hiddenWord: 'mock',
-        }
-    });
+    const wrapper = shallowMount(ChosenWord);
 
     it('should render hiddenWord', () => {
         const hiddenWord = wrapper.get('[data-test="hiddenWord"]').text();
         expect(wrapper.text()).toBe(hiddenWord);
     })
 
-    it('should contain passed props', () => {
+    it('should contain passed props', async () => {
+        await wrapper.setProps({
+            hiddenWord: 'mock',
+        })
         expect(wrapper.props().hiddenWord).toBe('mock');
     })
 })
