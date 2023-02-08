@@ -6,9 +6,6 @@
 export default {
   name: "ChosenWord",
   props: ["hiddenWord"],
-  data() {
-    return {};
-  },
 };
 </script>
 
